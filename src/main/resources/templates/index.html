@@ -1,66 +1,11 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SkillForge Vocational School</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet">
-  </head>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+
+  <head th:replace="~{fragment/css :: css}"></head>
+  
+  
   <body>
-    <nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
-      <div class="container-xxl">
-        <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="#">
-          <span class="brand-mark"><i class="bi bi-tools"></i></span>
-          SkillForge
-        </a>
-
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="mainNav">
-          <ul class="navbar-nav ms-lg-4 me-lg-3 mb-3 mb-lg-0">
-            <li class="nav-item dropdown">
-              <button class="nav-link dropdown-toggle btn btn-link" data-bs-toggle="dropdown" aria-expanded="false">
-                Categories
-              </button>
-              <div class="dropdown-menu category-menu p-3">
-                <div class="row g-3">
-                  <div class="col-sm-6">
-                    <h6 class="dropdown-header px-0">Skilled Trades</h6>
-                    <a class="dropdown-item rounded" href="#">Electrical Installation</a>
-                    <a class="dropdown-item rounded" href="#">Plumbing Systems</a>
-                    <a class="dropdown-item rounded" href="#">Welding and Fabrication</a>
-                  </div>
-                  <div class="col-sm-6">
-                    <h6 class="dropdown-header px-0">Digital Careers</h6>
-                    <a class="dropdown-item rounded" href="#">Programming</a>
-                    <a class="dropdown-item rounded" href="#">IT Support</a>
-                    <a class="dropdown-item rounded" href="#">Design Tools</a>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li class="nav-item"><a class="nav-link" href="#courses">Courses</a></li>
-            <li class="nav-item"><a class="nav-link" href="#categories">Programs</a></li>
-            <li class="nav-item"><a class="nav-link" href="#career-paths">Career Paths</a></li>
-          </ul>
-
-          <form class="search-pill d-flex flex-grow-1 mb-3 mb-lg-0" role="search">
-            <i class="bi bi-search"></i>
-            <input class="form-control" type="search" placeholder="What do you want to learn?" aria-label="Search courses">
-            <button class="btn btn-dark" type="submit">Search</button>
-          </form>
-
-          <div class="auth-actions d-flex gap-2 ms-lg-3">
-            <a class="btn btn-outline-dark" href="#">Sign in</a>
-            <a class="btn btn-primary" href="#">Sign up</a>
-          </div>
-        </div>
-      </div>
-    </nav>
+    <div th:replace="~{fragment/header :: header}"></div>
 
     <main>
       <section class="hero-section">
@@ -123,7 +68,7 @@
               <a class="category-card" href="#">
                 <i class="bi bi-code-slash"></i>
                 <h3>Programming</h3>
-                <p>Web, mobile, Python, databases</p>
+                <p>-Web, mobile, Python, databases</p>
               </a>
             </div>
             <div class="col-md-6 col-xl-3">
@@ -192,69 +137,451 @@
           </div>
 
           <div class="row g-4">
-            <div class="col-md-6 col-xl-3">
-              <article class="course-card">
-                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80" alt="Laptop with programming code">
-                <div class="course-body">
-                  <span class="badge text-bg-success">Programming</span>
-                  <h3>Full-Stack Web Development Bootcamp</h3>
-                  <p>Build responsive sites, APIs, and database-backed apps.</p>
-                  <div class="rating"><i class="bi bi-star-fill"></i> 4.8 <span>(3,421)</span></div>
-                  <div class="course-meta">
-                    <span>12 weeks</span>
-                    <strong>$69</strong>
-                  </div>
+             <div class="col-md-6 col-xl-3">
+    <article class="course-card">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80"
+             alt="Development">
+
+        <div class="course-body">
+
+            <span class="badge text-bg-success">Development</span>
+
+            <div class="accordion" id="developmentAccordion">
+
+                <!-- Web Development -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#webDev">
+                             <strong>Web Development</strong>
+                        </button>
+                    </h2>
+
+                    <div id="webDev"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#developmentAccordion">
+
+                        <div class="accordion-body">
+                            <a href="#" class="d-block mb-2">-HTML & CSS</a>
+                            <a href="#" class="d-block mb-2">-JavaScript</a>
+                            <a href="#" class="d-block mb-2">-React</a>
+                            <a href="#" class="d-block mb-2">-Spring Boot</a>
+                        </div>
+                    </div>
                 </div>
-              </article>
+
+                <!-- Mobile -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#mobileDev">
+                             <strong>Mobile Development</strong>
+                        </button>
+                    </h2>
+
+                    <div id="mobileDev"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#developmentAccordion">
+
+                        <div class="accordion-body">
+                            <a href="#" class="d-block mb-2">-Android</a>
+                            <a href="#" class="d-block mb-2">-Flutter</a>
+                            <a href="#" class="d-block mb-2">-React Native</a>
+                            <a href="#" class="d-block">-Kotlin</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#gameDev">
+                              <strong>Game Development</strong>
+                        </button>
+                    </h2>
+
+                    <div id="gameDev"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#developmentAccordion">
+
+                        <div class="accordion-body">
+                            <a href="#" class="d-block mb-2">-Unity</a>
+                            <a href="#" class="d-block mb-2">-Unreal Engine</a>
+                            <a href="#" class="d-block mb-2">-Godot</a>
+                            <a href="#" class="d-block">-C#</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Software -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#softwareDev">
+                               <strong>Software Development</strong>
+                        </button>
+                    </h2>
+
+                    <div id="softwareDev"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#developmentAccordion">
+
+                        <div class="accordion-body">
+                            <a href="#" class="d-block mb-2">-Desktop Application</a>
+                            <a href="#" class="d-block mb-2">-Database</a>
+                            <a href="#" class="d-block mb-2">-Cloud</a>
+                            <a href="#" class="d-block">-DevOps</a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
-            <div class="col-md-6 col-xl-3">
-              <article class="course-card">
-                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=80" alt="Server room networking equipment">
-                <div class="course-body">
-                  <span class="badge text-bg-primary">IT Support</span>
-                  <h3>Computer Networking and Help Desk</h3>
-                  <p>Practice troubleshooting, network setup, and support workflows.</p>
-                  <div class="rating"><i class="bi bi-star-fill"></i> 4.7 <span>(2,186)</span></div>
-                  <div class="course-meta">
-                    <span>8 weeks</span>
-                    <strong>$49</strong>
-                  </div>
-                </div>
-              </article>
-            </div>
+        </div>
+    </article>
+</div>
+
+
 
             <div class="col-md-6 col-xl-3">
-              <article class="course-card">
-                <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=900&q=80" alt="Electrician working on wiring">
-                <div class="course-body">
-                  <span class="badge text-bg-warning">Trade Skills</span>
-                  <h3>Electrical Installation Fundamentals</h3>
-                  <p>Learn safety, tools, wiring plans, and inspection basics.</p>
-                  <div class="rating"><i class="bi bi-star-fill"></i> 4.9 <span>(1,304)</span></div>
-                  <div class="course-meta">
-                    <span>10 weeks</span>
-                    <strong>$59</strong>
-                  </div>
+    <article class="course-card">
+        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=80"
+             alt="Business">
+
+        <div class="course-body">
+
+            <span class="badge text-bg-primary">Business</span>
+
+            <div class="accordion" id="businessAccordion">
+
+                <!-- Marketing -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#marketing">
+                              <strong>Marketing</strong>
+                        </button>
+                    </h2>
+
+                    <div id="marketing"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#businessAccordion">
+                        <div class="accordion-body">
+                            <a href="#" class="d-block mb-2">-Digital Marketing</a>
+                            <a href="#" class="d-block mb-2">-Social Media Marketing</a>
+                            <a href="#" class="d-block mb-2">-SEO</a>
+                            <a href="#" class="d-block">-Content Marketing</a>
+                        </div>
+                    </div>
                 </div>
-              </article>
+
+                <!-- Management -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#management">
+                              <strong>Management</strong>
+                        </button>
+                    </h2>
+
+                    <div id="management"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#businessAccordion">
+                        <div class="accordion-body">
+                            <a href="#" class="d-block mb-2">-Project Management</a>
+                            <a href="#" class="d-block mb-2">-Business Management</a>
+                            <a href="#" class="d-block mb-2">-Leadership</a>
+                            <a href="#" class="d-block">-Operations</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Finance -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#finance">
+                              <strong>Finance</strong>
+                        </button>
+                    </h2>
+
+                    <div id="finance"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#businessAccordion">
+                        <div class="accordion-body">
+                            <a href="#" class="d-block mb-2">-Accounting</a>
+                            <a href="#" class="d-block mb-2">-Financial Analysis</a>
+                            <a href="#" class="d-block mb-2">-Investment</a>
+                            <a href="#" class="d-block">-Taxation</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Entrepreneurship -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#entrepreneurship">
+                             <strong>Entrepreneurship</strong>
+                        </button>
+                    </h2>
+
+                    <div id="entrepreneurship"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#businessAccordion">
+                        <div class="accordion-body">
+                            <a href="#" class="d-block mb-2">-Startup</a>
+                            <a href="#" class="d-block mb-2">-Business Plan</a>
+                            <a href="#" class="d-block mb-2">-Innovation</a>
+                            <a href="#" class="d-block">-E-commerce</a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
-            <div class="col-md-6 col-xl-3">
-              <article class="course-card">
-                <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=900&q=80" alt="Designer working on digital interface layouts">
-                <div class="course-body">
-                  <span class="badge text-bg-danger">Design</span>
-                  <h3>UI Design and Freelance Portfolio</h3>
-                  <p>Create app screens, design systems, and client-ready case studies.</p>
-                  <div class="rating"><i class="bi bi-star-fill"></i> 4.6 <span>(1,982)</span></div>
-                  <div class="course-meta">
-                    <span>6 weeks</span>
-                    <strong>$39</strong>
-                  </div>
+        </div>
+    </article>
+</div>
+
+         <div class="col-md-6 col-xl-3">
+    <article class="course-card">
+        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80"
+             alt="Design">
+
+        <div class="course-body">
+
+            <span class="badge text-bg-danger">Design</span>
+
+            <div class="accordion" id="designAccordion">
+
+                <!-- Graphic Design -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#graphicDesign">
+                                                        <strong>Graphic Design</strong>
+
+                        </button>
+                    </h2>
+
+                    <div id="graphicDesign"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#designAccordion">
+                        <div class="accordion-body">
+                            <a href="#" class="d-block mb-2">-Adobe Photoshop</a>
+                            <a href="#" class="d-block mb-2">-Adobe Illustrator</a>
+                            <a href="#" class="d-block mb-2">-Canva</a>
+                            <a href="#" class="d-block">-Brand Design</a>
+                        </div>
+                    </div>
                 </div>
-              </article>
+
+                <!-- UI/UX Design -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#uiux">
+                                                       <strong>UI/UX Design</strong>
+
+                        </button>
+                    </h2>
+
+                    <div id="uiux"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#designAccordion">
+                        <div class="accordion-body">
+                            <a href="#" class="d-block mb-2">-Figma</a>
+                            <a href="#" class="d-block mb-2">-Adobe XD</a>
+                            <a href="#" class="d-block mb-2">-Wireframing</a>
+                            <a href="#" class="d-block">-Prototyping</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Editing -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#videoEditing">
+                           <strong>Video Editing</strong>
+                        </button>
+                    </h2>
+
+                    <div id="videoEditing"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#designAccordion">
+                        <div class="accordion-body">
+                            <a href="#" class="d-block mb-2">-Adobe Premiere Pro</a>
+                            <a href="#" class="d-block mb-2">-After Effects</a>
+                            <a href="#" class="d-block mb-2">-DaVinci Resolve</a>
+                            <a href="#" class="d-block">-CapCut</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3D Design -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#threeD">
+                           <strong>3D Design</strong>
+                        </button>
+                    </h2>
+
+                    <div id="threeD"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#designAccordion">
+                        <div class="accordion-body">
+                            <a href="#" class="d-block mb-2">-Blender</a>
+                            <a href="#" class="d-block mb-2">-AutoCAD</a>
+                            <a href="#" class="d-block mb-2">-SketchUp</a>
+                            <a href="#" class="d-block">-3ds Max</a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+
+        </div>
+    </article>
+</div>
+
+
+
+          <div class="col-md-6 col-xl-3">
+    <article class="course-card">
+        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=80"
+             alt="IT & Software">
+
+        <div class="course-body">
+
+            <span class="badge text-bg-info">IT & Software</span>
+
+            <div class="accordion" id="itAccordion">
+
+                <!-- Networking -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#networking">
+                          <strong>Networking</strong>
+                        </button>
+                    </h2>
+
+                    <div id="networking"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#itAccordion">
+                        <div class="accordion-body">
+                            <a href="#" class="d-block mb-2">-CCNA</a>
+                            <a href="#" class="d-block mb-2">-CCNP</a>
+                            <a href="#" class="d-block mb-2">-Network Security</a>
+                            <a href="#" class="d-block">-Wireless Networking</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cyber Security -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#cyber">
+                            <strong>Cyber Security</strong>
+                        </button>
+                    </h2>
+
+                    <div id="cyber"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#itAccordion">
+                        <div class="accordion-body">
+                            <a href="#" class="d-block mb-2">-Ethical Hacking</a>
+                            <a href="#" class="d-block mb-2">-Penetration Testing</a>
+                            <a href="#" class="d-block mb-2">-Kali Linux</a>
+                            <a href="#" class="d-block">-Security+</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cloud Computing -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#cloud">
+                          <strong>Cloud Computing</strong>
+                        </button>
+                    </h2>
+
+                    <div id="cloud"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#itAccordion">
+                        <div class="accordion-body">
+                            <a href="#" class="d-block mb-2">-AWS</a>
+                            <a href="#" class="d-block mb-2">-Microsoft Azure</a>
+                            <a href="#" class="d-block mb-2">-Google Cloud</a>
+                            <a href="#" class="d-block">-Docker & Kubernetes</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Database -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#database">
+                          <strong>Database</strong>
+                        </button>
+                    </h2>
+
+                    <div id="database"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#itAccordion">
+                        <div class="accordion-body">
+                            <a href="#" class="d-block mb-2">-MySQL</a>
+                            <a href="#" class="d-block mb-2">-Oracle Database</a>
+                            <a href="#" class="d-block mb-2">-SQL Server</a>
+                            <a href="#" class="d-block">-MongoDB</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </article>
+</div>
           </div>
         </div>
       </section>
@@ -294,21 +621,10 @@
       </section>
     </main>
 
-    <footer class="footer">
-      <div class="container-xxl d-flex flex-column flex-md-row justify-content-between gap-3">
-        <div>
-          <strong>SkillForge Vocational School</strong>
-          <p class="mb-0">Practical online learning for hands-on careers.</p>
-        </div>
-        <div class="footer-links">
-          <a href="#">About</a>
-          <a href="#">Teach</a>
-          <a href="#">Careers</a>
-          <a href="#">Help</a>
-        </div>
-      </div>
-    </footer>
+   <div th:replace="~{fragment/footer :: footer}"></div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+   <div th:replace="~{fragment/js :: js}"></div>>
+   
+   
   </body>
 </html>
