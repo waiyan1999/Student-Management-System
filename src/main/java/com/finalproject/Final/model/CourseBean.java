@@ -16,8 +16,14 @@ public class CourseBean {
 
     private String name;
     private String description;
+    
+    private String duration;
+    
+    private String subcategoryName;
+    private String categoryName;	
+    private String teacherName;
 
-    private int duration;
+  
     private int fee;
 
     private String level;
