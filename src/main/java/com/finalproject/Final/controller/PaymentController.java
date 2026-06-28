@@ -1,4 +1,4 @@
-package com.finalproject.Final.controller;
+package com.finalproject.Final.Controller;
 
 import java.util.Map;
 

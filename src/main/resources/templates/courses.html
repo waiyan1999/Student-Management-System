@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragment/css :: css}"></head>
+<body>
+
+	<div th:replace="~{fragment/header :: header}"></div>
+
+
+	<main>
+		<section class="section-pad bg-light">
+			<div class="container-xxl">
+				<div class="section-heading">
+					<div>
+						<span class="eyebrow">All courses</span>
+						<h1 class="mb-0">Choose a practical course and start building
+							career-ready skills.</h1>
+					</div>
+					<div class="btn-group course-tabs" role="group"
+						aria-label="Course filters">
+						<button type="button" class="btn btn-dark active">All</button>
+						<button type="button" class="btn btn-outline-dark">Beginner</button>
+						<button type="button" class="btn btn-outline-dark">Popular</button>
+					</div>
+				</div>
+
+				<div class="row g-4">
+					<div class="row g-4">
+
+						<div class="col-md-6 col-xl-4" th:each="course : ${courses}">
+
+							<article class="course-card">
+
+								<img
+									src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80"
+									alt="Course image">
+
+								<div class="container mt-4">
+
+									<h5 th:text="${course.name}"></h5>
+
+									<p th:text="${course.subcategoryName}"></p>
+
+									<p th:text="${course.description}"></p>
+
+									<div class="row g-2 my-2">
+
+										<div class="col-4">
+											<small class="text-muted d-block">Level</small> <strong
+												th:text="${course.level}"></strong>
+										</div>
+
+										<div class="col-4">
+											<small class="text-muted d-block">Duration</small> <strong
+												th:text="${course.duration}"></strong>
+										</div>
+
+										<div class="col-4">
+											<small class="text-muted d-block">Fee</small> <strong
+												th:text="${course.fee} + ' MMK'"></strong>
+										</div>
+
+									</div>
+
+									<div class="course-meta">
+										<a th:href="@{'/courses/' + ${course.id}}"
+											class="btn btn-primary btn-sm" href="#">View Details</a>
+									</div>
+
+
+
+								</div>
+
+							</article>
+
+						</div>
+
+					</div>
+					<div class="col-md-6 col-xl-4">
+						<article class="course-card">
+							<img
+								src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=80"
+								alt="Networking equipment in a server room">
+							<div class="course-body">
+								<span class="badge text-bg-primary">IT Support</span>
+								<h3>Computer Networking and Help Desk</h3>
+								<div class="row g-2 my-3">
+									<div class="col-6">
+										<small class="text-muted d-block">Level</small> <strong>Beginner</strong>
+									</div>
+									<div class="col-6">
+										<small class="text-muted d-block">Duration</small> <strong>8
+											weeks</strong>
+									</div>
+								</div>
+								<div class="course-meta">
+									<strong>$49</strong> <a class="btn btn-primary btn-sm" href="#">View
+										Details</a>
+								</div>
+							</div>
+						</article>
+					</div>
+
+					<div class="col-md-6 col-xl-4">
+						<article class="course-card">
+							<img
+								src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=900&q=80"
+								alt="Electrician working with wiring">
+							<div class="course-body">
+								<span class="badge text-bg-warning">Trade Skills</span>
+								<h3>Electrical Installation Fundamentals</h3>
+								<div class="row g-2 my-3">
+									<div class="col-6">
+										<small class="text-muted d-block">Level</small> <strong>Intermediate</strong>
+									</div>
+									<div class="col-6">
+										<small class="text-muted d-block">Duration</small> <strong>10
+											weeks</strong>
+									</div>
+								</div>
+								<div class="course-meta">
+									<strong>$59</strong> <a class="btn btn-primary btn-sm" href="#">View
+										Details</a>
+								</div>
+							</div>
+						</article>
+					</div>
+
+					<div class="col-md-6 col-xl-4">
+						<article class="course-card">
+							<img
+								src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=900&q=80"
+								alt="Designer working on interface layouts">
+							<div class="course-body">
+								<span class="badge text-bg-danger">Design</span>
+								<h3>UI Design and Freelance Portfolio</h3>
+								<div class="row g-2 my-3">
+									<div class="col-6">
+										<small class="text-muted d-block">Level</small> <strong>Beginner</strong>
+									</div>
+									<div class="col-6">
+										<small class="text-muted d-block">Duration</small> <strong>6
+											weeks</strong>
+									</div>
+								</div>
+								<div class="course-meta">
+									<strong>$39</strong> <a class="btn btn-primary btn-sm" href="#">View
+										Details</a>
+								</div>
+							</div>
+						</article>
+					</div>
+
+					<div class="col-md-6 col-xl-4">
+						<article class="course-card">
+							<img
+								src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80"
+								alt="People learning business skills at a desk">
+							<div class="course-body">
+								<span class="badge text-bg-info">Business</span>
+								<h3>Office Administration and Digital Tools</h3>
+								<div class="row g-2 my-3">
+									<div class="col-6">
+										<small class="text-muted d-block">Level</small> <strong>Beginner</strong>
+									</div>
+									<div class="col-6">
+										<small class="text-muted d-block">Duration</small> <strong>7
+											weeks</strong>
+									</div>
+								</div>
+								<div class="course-meta">
+									<strong>$45</strong> <a class="btn btn-primary btn-sm" href="#">View
+										Details</a>
+								</div>
+							</div>
+						</article>
+					</div>
+
+					<div class="col-md-6 col-xl-4">
+						<article class="course-card">
+							<img
+								src="https://images.unsplash.com/photo-1581092921461-39b9d08a9b21?auto=format&fit=crop&w=900&q=80"
+								alt="Workshop tools and technical equipment">
+							<div class="course-body">
+								<span class="badge text-bg-secondary">Workshop</span>
+								<h3>Welding and Fabrication Basics</h3>
+								<div class="row g-2 my-3">
+									<div class="col-6">
+										<small class="text-muted d-block">Level</small> <strong>Beginner</strong>
+									</div>
+									<div class="col-6">
+										<small class="text-muted d-block">Duration</small> <strong>9
+											weeks</strong>
+									</div>
+								</div>
+								<div class="course-meta">
+									<strong>$55</strong> <a class="btn btn-primary btn-sm" href="#">View
+										Details</a>
+								</div>
+							</div>
+						</article>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<div th:replace="~{fragment/footer :: footer}"></div>
+
+	<div th:replace="~{fragment/js :: js}"></div>
+
+
+</body>
+</html>

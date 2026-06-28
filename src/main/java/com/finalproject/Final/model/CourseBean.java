@@ -12,12 +12,17 @@ public class CourseBean {
     private int id;
 
     private int courseCategoryId;
-    private int subCategoryId;
+    private int subcategoryId;
 
     private String name;
     private String description;
+    
+    private String duration;
+    
+    private String subcategoryName;
+    private String categoryName;	
 
-    private int duration;
+    
     private int fee;
 
     private String level;
