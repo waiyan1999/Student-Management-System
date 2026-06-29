@@ -1,77 +1,93 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Ace Inspiration</title>
+    <meta charset="UTF-8">
+    <title>Ace Inspiration</title>
 </head>
 <body>
 
 <header th:fragment="header">
-<nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
-      <div class="container-xxl">
-    <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" th:href="@{/}">
-    <span class="ace-logo">
-        <i class="bi bi-mortarboard-fill"></i>
-    </span>
+    <nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
+        <div class="container-xxl">
 
-    <div class="d-flex flex-column lh-1">
-        <span class="ace-text">ACE</span>
-        <small class="ace-subtext">Inspiration</small>
-    </div>
-</a>
-
-
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="mainNav">
-          <ul class="navbar-nav ms-lg-4 me-lg-3 mb-3 mb-lg-0">
-            <li class="nav-item dropdown">
-              <button class="nav-link dropdown-toggle btn btn-link" data-bs-toggle="dropdown" aria-expanded="false">
-                Categories
-              </button>
-              <div class="dropdown-menu category-menu p-3">
-                <div class="row g-3">
-                  <div class="col-sm-6">
-                    <h6 class="dropdown-header px-0">Web Development</h6>
-                    <a class="dropdown-item rounded" href="#">HTML & CSS</a>
-                    <a class="dropdown-item rounded" href="#">JavaScript Basics</a>
-                    <a class="dropdown-item rounded" href="#">SpringBoot</a>
-                      <a class="dropdown-item rounded" href="#">C#</a>
-                        <a class="dropdown-item rounded" href="#">Java</a>
-                  </div>
-                  <div class="col-sm-6">
-                    <h6 class="dropdown-header px-0">Mobile Development</h6>
-                    <a class="dropdown-item rounded" href="#">Android</a>
-                    <a class="dropdown-item rounded" href="#">Flutter</a>
-                  </div>
-                   <div class="col-sm-6">
-                    <h6 class="dropdown-header px-0">Game Development</h6>
-                    <a class="dropdown-item rounded" href="#">Unity</a>
-                    <a class="dropdown-item rounded" href="#">Unreal Engine</a>
-                  </div>
+            <!-- Brand / Logo -->
+            <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" th:href="@{/}">
+                <span class="ace-logo">
+                    <i class="bi bi-mortarboard-fill"></i>
+                </span>
+                <div class="d-flex flex-column lh-1">
+                    <span class="ace-text">ACE</span>
+                    <small class="ace-subtext">Inspiration</small>
                 </div>
-              </div>
-            </li>
-            <li class="nav-item"><a class="nav-link" th:href="@{/courses/show}">Courses</a></li>
-            <li class="nav-item"><a class="nav-link" href="#categories">Programs</a></li>
-            <li class="nav-item"><a class="nav-link" href="#career-paths">Career Paths</a></li>
-          </ul>
+            </a>
 
-          <form class="search-pill d-flex flex-grow-1 mb-3 mb-lg-0" role="search">
-            <i class="bi bi-search"></i>
-            <input class="form-control" type="search" placeholder="What do you want to learn?" aria-label="Search courses">
-            <button class="btn btn-dark" type="submit">Search</button>
-          </form>
+            <!-- Toggler for mobile -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#mainNav" aria-controls="mainNav"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-          <div class="auth-actions d-flex gap-2 ms-lg-3">
-            <a class="btn btn-outline-dark" href="#">Sign in</a>
-            <a class="btn btn-primary" href="#">Sign up</a>
-          </div>
+            <!-- Main nav -->
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-lg-4 me-lg-3 mb-3 mb-lg-0">
+
+                    <!-- ========== DYNAMIC CATEGORIES DROPDOWN ========== -->
+                    <li class="nav-item dropdown">
+                        <button class="nav-link dropdown-toggle btn btn-link"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                            Categories
+                        </button>
+                        <div class="dropdown-menu category-menu p-3">
+                            <!-- Display all categories in a 2‑column grid -->
+                            <div th:if="${not #lists.isEmpty(allCategories)}"
+                                 class="row row-cols-2 g-2">
+                                <div th:each="cat : ${allCategories}" class="col">
+                                    <a class="dropdown-item rounded"
+                                       th:href="@{/courses/by-category/{id}(id=${cat.id})}"
+                                       th:text="${cat.name}">
+                                    </a>
+                                </div>
+                            </div>
+                            <div th:if="${#lists.isEmpty(allCategories)}"
+                                 class="text-muted text-center py-2">
+                                No categories available
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Other nav links -->
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/courses/show}">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#categories">Programs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#career-paths">Career Paths</a>
+                    </li>
+                </ul>
+
+                <!-- Search bar -->
+                <form class="search-pill d-flex flex-grow-1 mb-3 mb-lg-0" role="search"
+                      th:action="@{/courses/search}" method="get">
+                    <i class="bi bi-search"></i>
+                    <input class="form-control" type="search"
+                           name="keyword" placeholder="What do you want to learn?"
+                           aria-label="Search courses">
+                    <button class="btn btn-dark" type="submit">Search</button>
+                </form>
+
+                <!-- Auth buttons -->
+                <div class="auth-actions d-flex gap-2 ms-lg-3">
+                    <a class="btn btn-outline-dark" th:href="@{/login}">Sign in</a>
+                    <a class="btn btn-primary" th:href="@{/register}">Sign up</a>
+                </div>
+            </div>
+
         </div>
-      </div>
     </nav>
-    </header>
+</header>
+
 </body>
 </html>

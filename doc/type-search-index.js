@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"com.finalproject.Final.controller","l":"CourseCategoryController"}];updateSearchResults();

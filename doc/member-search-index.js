@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"com.finalproject.Final.controller","c":"CourseCategoryController","l":"CourseCategoryController()","u":"%3Cinit%3E()"}];updateSearchResults();
