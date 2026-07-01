@@ -1,4 +1,4 @@
-package com.finalproject.Final.Controller;
+package com.finalproject.Final.controller;
 
 import java.util.List;
 
