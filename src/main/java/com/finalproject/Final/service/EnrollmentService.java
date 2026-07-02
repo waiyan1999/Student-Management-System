@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.finalproject.Final.dto.EnrollmentDTO;
+import com.finalproject.Final.model.CourseBean;
 import com.finalproject.Final.model.EnrollmentBean;
+import com.finalproject.Final.repository.CourseRepository;
 import com.finalproject.Final.repository.EnrollmentRepository;
 
 @Service
@@ -16,6 +18,9 @@ public class EnrollmentService {
 
     @Autowired
     private EnrollmentRepository repo;
+    
+    @Autowired
+    private CourseRepository courseRepo;
 
     public int createEnrollment(EnrollmentDTO dto) {
 
@@ -40,6 +45,17 @@ public class EnrollmentService {
     public void confirmEnrollment(int enrollmentId) {
         repo.updateStatus(enrollmentId, 1);
     }
+    
+    public List<CourseBean> getEnrolledCourses(int userId) {
+        return repo.getEnrolledCourses(userId);
+    }
+    
+//    public List<CourseBean> getEnrolledCourses(int userId) {
+//
+//        List<Integer> courseIds = repo.getEnrolledCourseIds(userId);
+//
+//        return courseRepo.getCoursesByIds(courseIds);
+//    }
     
 
 }

@@ -19,6 +19,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UsersBean {
+	
+	private Integer id;
 
 	private Integer roleId;
 @NotBlank(message="Name is required")

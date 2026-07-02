@@ -1,18 +1,25 @@
 package com.finalproject.Final.repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 import com.finalproject.Final.model.CourseBean;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 
 @Repository
 public class CourseRepository {
 
     @Autowired
     private JdbcTemplate jdbc;
+    
+    @Autowired
+    private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     private final CourseRowMapper mapper = new CourseRowMapper();
 
@@ -136,5 +143,23 @@ public class CourseRepository {
     // 🔹 DELETE
     public void delete(int id) {
         jdbc.update("DELETE FROM course WHERE id=?", id);
+    }
+    
+    
+    public List<CourseBean> getCoursesByIds(List<Integer> ids) {
+
+        if (ids == null || ids.isEmpty()) {
+            return new ArrayList<>();
+        }
+
+        String sql = "SELECT *\r\n"
+        		+ "        FROM course\r\n"
+        		+ "        WHERE id IN (:ids)";
+            
+
+        MapSqlParameterSource params = new MapSqlParameterSource();
+        params.addValue("ids", ids);
+
+        return namedParameterJdbcTemplate.query(sql, params, new CourseRowMapper());
     }
 }
