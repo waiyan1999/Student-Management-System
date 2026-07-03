@@ -1,22 +1,104 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<head th:replace="~{fragment/css :: css}"></head>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+
+    <th:block th:replace="~{fragment/css :: css}"></th:block>
 </head>
 
 <body>
 <div th:replace="~{fragment/header :: header}"></div>
-<h3> ✅ Registration Successful!</h3>
+      
+<div class="container mt-6">
 
-<h4>Your account has been created successfully.
+    <div class="card shadow">
 
- 
- </h4>
+        <div class="card-header bg-primary text-white text-center">
+            <h3>✅ Registration Successful</h3>
+            <p class="mb-0">Your account has been created successfully.</p>
+        </div>
+
+        <div class="card-body">
+
+            <!-- Profile Photo -->
+            <div class="text-center mb-4">
+             
+             <img th:src="${userObj.filePath}"
+
+     class="rounded-circle border"
+     width="130"
+     height="130">
+            </div>
+           
+   
+
+            <h4 class="text-center mb-4">Photo</h4>
+
+            <table class="table table-bordered">
+
+                <tr>
+                    <th width="30%">Name</th>
+                    <td th:text="${userObj.name}"></td>
+                </tr>
+
+                <tr>
+                    <th>Email</th>
+                    <td th:text="${userObj.email}"></td>
+                </tr>
+
+                <tr>
+                    <th>Password</th>
+                    <td th:text="${userObj.password}"></td>
+                </tr>
+
+                <tr>
+                    <th>Phone Number</th>
+                    <td th:text="${userObj.phoneNumber}"></td>
+                </tr>
+
+                <tr>
+                    <th>Address</th>
+                    <td th:text="${userObj.address}"></td>
+                </tr>
+
+                <tr>
+                    <th>Date of Birth</th>
+                    <td th:text="${userObj.dob}"></td>
+                </tr>
+
+                <tr>
+                    <th>Gender</th>
+                    <td th:text="${userObj.gender}"></td>
+                </tr>
+
+            </table>
+
+            <div class="text-center mt-4">
+                <a th:href="@{/student/register}" class="btn btn-primary">
+                    Register Another User
+                </a>
+
+                
+                
+                <a th:href="@{/student/update}" class="btn btn-secondary">
+                  Edit Profile
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+     </div>
 
 
 
-        <div th:replace="~{fragment/js :: js}"></div>
+
+   
+  
+
+<div th:replace="~{fragment/footer :: footer}"></div>
+<th:block th:replace="~{fragment/js :: js}"></th:block>
+
 </body>
 </html>

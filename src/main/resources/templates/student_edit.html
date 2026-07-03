@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Edit Profile</title>
+
+<head th:replace="~{fragment/css :: css}"></head>
+
+</head>
+<body>
+
+<div th:replace="~{fragment/header :: header}"></div>
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+
+            <div class="card shadow">
+
+                <div class="card-header text-center">
+                    <h3>Edit Profile</h3>
+                    <h5 class="text-muted">Update your personal information</h5>
+                </div>
+
+                <div class="card-body">
+
+                    <form th:action="@{/student/update}"
+                          th:object="${userObj}"
+                          method="post"
+                          enctype="multipart/form-data">
+
+                        <!-- Hidden ID -->
+                        <input type="hidden" th:field="*{id}">
+
+
+                    
+                        <!-- Current Photo -->
+                        <div class="text-center mb-4">
+                        
+                            
+<img th:src="@{${userObj.filePath}}"
+     class="rounded-circle border"
+     width="130"
+     height="130">
+                            <br><br>
+
+                            <input type="file"
+                                   name="photo"
+                                   class="form-control"
+                                   accept="image/*">
+                        </div>
+
+                        <!-- Name -->
+                        <div class="mb-3">
+                            <label class="form-label">Full Name</label>
+
+                            <input type="text"
+                                   th:field="*{name}"
+                                   class="form-control">
+
+                            <small class="text-danger"
+                                   th:errors="*{name}"></small>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+
+                            <input type="email"
+                                   th:field="*{email}"
+                                   class="form-control">
+
+                            <small class="text-danger"
+                                   th:errors="*{email}"></small>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="mb-3">
+                            <label class="form-label">Password</label>
+
+                            <input type="text"
+                                   th:field="*{password}"
+                                   class="form-control">
+
+                            <small class="text-danger"
+                                   th:errors="*{password}"></small>
+                        </div>
+                        
+                        
+
+                        <!-- Phone -->
+                        <div class="mb-3">
+                            <label class="form-label">Phone Number</label>
+
+                            <input type="text"
+                                   th:field="*{phoneNumber}"
+                                   class="form-control">
+
+                            <small class="text-danger"
+                                   th:errors="*{phoneNumber}"></small>
+                        </div>
+
+                        <!-- Address -->
+                        <div class="mb-3">
+                            <label class="form-label">Address</label>
+
+                            <textarea th:field="*{address}"
+                                      rows="3"
+                                      class="form-control"></textarea>
+
+                            <small class="text-danger"
+                                   th:errors="*{address}"></small>
+                        </div>
+
+                        <!-- DOB -->
+                        <div class="mb-3">
+                            <label class="form-label">Date of Birth</label>
+
+                            <input type="text"
+                                   th:field="*{dob}"
+                                   class="form-control">
+
+                            <small class="text-danger"
+                                   th:errors="*{dob}"></small>
+                        </div>
+
+
+                        <!-- Gender -->
+                        <div class="mb-3">
+
+                            <label class="form-label">Gender</label>
+
+                            <br>
+
+                            <div class="form-check form-check-inline">
+
+                                <input class="form-check-input"
+                                       type="radio"
+                                       th:field="*{gender}"
+                                       value="Male">
+
+                                <label class="form-check-label">
+                                    Male
+                                </label>
+
+                            </div>
+
+                            <div class="form-check form-check-inline">
+
+                                <input class="form-check-input"
+                                       type="radio"
+                                       th:field="*{gender}"
+                                       value="Female">
+
+                                <label class="form-check-label">
+                                    Female
+                                </label>
+
+                            </div>
+
+                            <small class="text-danger"
+                                   th:errors="*{gender}"></small>
+
+                        </div>
+
+                        <div class="d-grid mt-4">
+
+                            <button class="btn btn-primary"
+                                    type="submit">
+
+                                Update Profile
+
+                            </button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+                        </div>
+                        <div th:replace="~{fragment/footer :: footer}"></div>
+
+   <div th:replace="~{fragment/js :: js}"></div>
+   
+</body>
+</html>

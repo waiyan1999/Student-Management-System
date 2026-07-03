@@ -123,6 +123,7 @@ You must be at least 16 years old.
             <input type="file" name="photo" class="form-control" accept="image/*">
            <small class="text-muted">Allowed formats: JPG, JPEG, PNG</small><br>
             <small class="text-danger" th:errors="*{filePath}"></small>
+            <p th:if="${error}" style="color: red;" th:text="${error}"></p>
         </div>
         
         <!-- Terms -->
