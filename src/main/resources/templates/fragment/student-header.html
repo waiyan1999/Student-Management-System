@@ -59,7 +59,7 @@
 
             <!-- LOGO -->
             <a class="navbar-brand d-flex align-items-center gap-2 fw-bold"
-               th:href="@{/student/dashboard}">
+               th:href="@{/student/portal}">
                 <span class="ace-logo">
                     <i class="bi bi-mortarboard-fill"></i>
                 </span>
@@ -84,7 +84,13 @@
 
                 <!-- Left -->
                 <ul class="navbar-nav ms-lg-4">
-
+						
+					<li class="nav-item">
+                        <a class="nav-link"
+                           th:href="@{/}">
+                           Home
+                        </a>
+                    </li>	
                     
 
                     <li class="nav-item">
@@ -108,7 +114,7 @@
 
                     <span class="fw-semibold">
                         <i class="bi bi-person-circle me-1"></i>
-                       <!--  <span th:text="${session.loginUser.name}"> -->
+                        <span th:text="${student.name}"> 
                             Student Name
                         </span>
                     </span>

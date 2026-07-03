@@ -43,16 +43,16 @@ public class EnrollmentController {
     
     @GetMapping("/show")
     public String showEnrollPage(@RequestParam int courseId,
-                                 
+                                 HttpSession session,
                                  Model model) {
 
     	//use this when login is complete
-//        UserBean student = (UserBean) session.getAttribute("loginUser");
+        UserBean student = (UserBean)session.getAttribute("loginUser");
     	
     	//temporary
     	//to replace with above code
     	//1 is Aung Aung
-    	UserBean student = userService.findById(5);
+//    	UserBean student = userService.findById(5);
 
     	
         CourseBean course = courseService.getById(courseId);

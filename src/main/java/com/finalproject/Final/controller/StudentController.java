@@ -15,6 +15,8 @@ import com.finalproject.Final.service.EnrollmentService;
 import com.finalproject.Final.service.UserService;
 import com.finalproject.Final.util.UserCodeUtil;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/student")
 public class StudentController {
@@ -27,9 +29,11 @@ public class StudentController {
 	
 	
 	@GetMapping("/portal")
-	public String showStudentHome(Model model) {
+	public String showStudentHome(Model model, HttpSession session) {
 
-	    UserBean student = userService.findById(5); // temporary hardcoded
+//	    UserBean student = userService.findById(5); // temporary hardcoded
+		
+		 UserBean student = (UserBean)session.getAttribute("loginUser");
 
 	    List<CourseBean> courses =  enrollmentService.getEnrolledCourses(student.getId());
 //	           
