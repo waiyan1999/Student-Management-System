@@ -3,6 +3,8 @@ package com.finalproject.Final.model;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -64,7 +66,7 @@ public class UsersBean {
 	@NotBlank(message="Address is required")
 	private String address;
 	
-	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@NotNull(message="Date of birth is required")
 	@Past(message = "Date of birth must be in the past")
 	private LocalDate dob;
