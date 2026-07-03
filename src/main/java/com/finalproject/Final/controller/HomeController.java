@@ -20,6 +20,6 @@ public class HomeController {
         }
 
         m.addAttribute("user", user);
-        return "index"; 
+        return "layout/index"; 
     }
 }

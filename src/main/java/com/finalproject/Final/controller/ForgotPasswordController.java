@@ -15,7 +15,7 @@ public class ForgotPasswordController {
     private UserRepository uRepo;
     @GetMapping("/forgot-password")
     public String forgotPasswordPage() {
-        return "forgot-password"; 
+        return "auth/forgot-password"; 
     }
 
     @PostMapping("/forgot-password")
@@ -31,6 +31,6 @@ public class ForgotPasswordController {
             m.addAttribute("error", "Email not found");
         }
 
-        return "forgot-password"; 
+        return "auth/forgot-password"; 
     }
 }

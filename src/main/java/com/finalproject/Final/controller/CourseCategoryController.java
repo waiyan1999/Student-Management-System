@@ -38,7 +38,7 @@ public class CourseCategoryController {
 		List<CourseCategoryBean> courseCategoryList = courseCategoryService.getAllCourseCategory();
 		m.addAttribute("courseCategoryList",courseCategoryList);
 		m.addAttribute("courseCategory", new CourseCategoryDTO());
-		return "course-category";
+		return "admin/course-category";
 	}
 	
 	@PostMapping("/create")

@@ -18,7 +18,7 @@ public class LoginController {
 
     @GetMapping("/login")
     public String loginPage() {
-        return "login";
+        return "auth/login";
     }
 
     @PostMapping("/login")
@@ -36,7 +36,7 @@ public class LoginController {
         }
 
         m.addAttribute("error", "Invalid email or password");
-        return "login";
+        return "auth/login";
     }
 
     @GetMapping("/logout")

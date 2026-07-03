@@ -24,7 +24,7 @@ public class IndexController {
     	    model.addAttribute("allList", allList);
 
 
-        return "index";
+        return "layout/index";
     }
 
 }

@@ -45,7 +45,7 @@ public class StudentController {
 	    model.addAttribute("courses", courses);
 	    model.addAttribute("enrolledCoursesCount", courses.size());
 
-	    return "student-home";
+	    return "student/student-home";
 	}
 	
 	

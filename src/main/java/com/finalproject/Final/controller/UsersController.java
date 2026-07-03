@@ -44,7 +44,7 @@ public class UsersController {
 	   // m.addAttribute("userObj", new UserBean());
 	   // return "success";
 	    
-	    return "student_register";
+	    return "student/student_register";
 	}
 	@GetMapping("/registers")
 	public String success(Model m) {
@@ -52,7 +52,7 @@ public class UsersController {
 	    m.addAttribute("userObj", user);
 	    
 	   // return "success";
-	    return "success";
+	    return "student/success";
 	}
 	
 	
@@ -71,19 +71,19 @@ public class UsersController {
 		                "Age must be at least 16 years old"); }
 		
 		if(br.hasErrors()) {
-			return"student_register";
+			return"student/student_register";
 		}
 		
 		if (photo.isEmpty()) {
 	        m.addAttribute("error", "Please select a photo");
-	        return "student_register";
+	        return "student/student_register";
 	    }
 		//photo size 
 		 long maxSize = 2 * 1024 * 1024;
 	     if (photo.getSize() > maxSize) {
 		        m.addAttribute("error",
 		                "Photo size must not exceed 2 MB!");
-		        return"student_register";
+		        return"student/student_register";
 	     }
 		        
 		         // Content Type Validation
@@ -94,14 +94,14 @@ public class UsersController {
 			                    || contentType.equals("image/png"))) {
 
 			        m.addAttribute("error", "Invalid image file");
-			        return "student_register";
+			        return "student/student_register";
 			    }
 			    
 			    BufferedImage image = ImageIO.read(photo.getInputStream());
 		    if (image == null) {
 			        m.addAttribute("error",
 			                "Invalid image file");
-			        return "student_register";
+			        return "student/student_register";
 			        }
 		    String fileName = photo.getOriginalFilename();
 
@@ -121,7 +121,7 @@ public class UsersController {
 		    if(uRepo.existsByEmail(obj.getEmail())) {
 			    m.addAttribute("emailError",
 			            "Email already exists");
-			    return "student_register";
+			    return "student/student_register";
 			}
 
 	  obj.setRoleId(3); // Student
@@ -134,7 +134,7 @@ public class UsersController {
 	   // return "redirect:/login";
 		
 		
-	return "success";
+	return "student/success";
 	}
 	
 	
@@ -156,7 +156,7 @@ public class UsersController {
 	    }
 
 	    if (br.hasErrors()) {
-	        return "student_edit";
+	        return "student/student_edit";
 	    }
 
 	    // Get Existing User
@@ -164,7 +164,7 @@ public class UsersController {
 
 	    if (oldUser == null) {
 	        model.addAttribute("error", "User not found.");
-	        return "student_edit";
+	        return "student/student_edit";
 	    }
 
 	    // Email Duplicate Check
@@ -176,7 +176,7 @@ public class UsersController {
 	        model.addAttribute(
 	                "emailError",
 	                "Email already exists.");
-          return "student_edit";
+          return "student/student_edit";
 	    }
 
 	    // Photo Upload (Optional)
@@ -191,7 +191,7 @@ public class UsersController {
 	                    "error",
 	                    "Photo size must not exceed 5 MB.");
 
-	            return "student_edit";
+	            return "student/student_edit";
 	        }
 
 	        // Content Type Validation
@@ -205,7 +205,7 @@ public class UsersController {
 	                    "error",
 	                    "Only JPG and PNG images are allowed.");
 
-	            return "student_edit";
+	            return "student/student_edit";
 	        }
 
 	        // Check Image
@@ -218,7 +218,7 @@ public class UsersController {
 	                    "error",
 	                    "Invalid image.");
 
-	            return "student_edit";
+	            return "student/student_edit";
 	        }
 
 	        // Upload Folder
@@ -255,7 +255,7 @@ public class UsersController {
 
 	    // Update User
 	    uRepo.updateUser(userObj);
-return "success";
+	    return "student/success";
 	   // return "redirect:/update";
 	}
 	
@@ -266,6 +266,6 @@ return "success";
 	    
 	    
 	   // return "success";
-	    return "student_edit";
+	    return "student/student_edit";
 	}
 }

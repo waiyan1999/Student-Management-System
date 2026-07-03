@@ -41,12 +41,12 @@ public class PaymentController {
             model.addAttribute("enrollment", enrollment);
             model.addAttribute("course", course);
 
-            return "payment";
+            return "student/payment";
 
         } catch (RuntimeException e) {
 
             model.addAttribute("errorMessage", e.getMessage());
-            return "payment";
+            return "student/payment";
         }
     }
 
@@ -71,7 +71,7 @@ public class PaymentController {
         model.addAttribute("course", course);
         model.addAttribute("paymentStatus", "PAID");
 
-        return "enroll-success";
+        return "student/enroll-success";
     }
     
     @PostMapping("/pay")
