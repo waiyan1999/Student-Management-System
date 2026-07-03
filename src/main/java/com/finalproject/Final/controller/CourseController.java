@@ -37,6 +37,10 @@ public class CourseController {
 
         CourseBean course = courseService.getById(id);
         List<ScheduleBean> schedules = scheduleService.getByCourseId(id);
+        
+        if (course.getSeatsAvailable() == 0) {
+            course.setStatus("FULL");
+        }
 
         model.addAttribute("course", course);
         model.addAttribute("schedules", schedules);

@@ -67,6 +67,52 @@
 
 							</div>
 						</article>
+						
+						<article class="course-card">
+							<img
+								src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=80">
+
+							<div class="course-body">
+
+								<span class="badge text-bg-primary"
+									th:text="${course.categoryName}"> Category </span>
+
+								<h3 th:text="${course.name}">Course Name</h3>
+
+								<p class="text-muted mb-1" th:text="${course.subcategoryName}">
+									Subcategory</p>
+
+								<p class="small text-muted" th:text="${course.description}">
+									Description</p>
+
+								<div class="row g-2 my-3">
+									<div class="col-6">
+										<small class="text-muted d-block">Level</small> <strong
+											th:text="${course.level}"></strong>
+									</div>
+									<div class="col-6">
+										<small class="text-muted d-block">Duration</small> <strong
+											th:text="${course.duration}"></strong>
+									</div>
+
+									<div class="col-6 mt-2">
+										<small class="text-muted d-block">Fee</small> <strong
+											th:text="'MMK ' + ${course.fee}"></strong>
+									</div>
+
+									<div class="col-6 mt-2">
+										<small class="text-muted d-block">Seats</small> <strong
+											th:text="${course.seatsAvailable} + ' / ' + ${course.seatsTotal}">
+										</strong>
+									</div>
+								</div>
+
+								<!-- VIEW BUTTON -->
+								<a class="btn btn-primary btn-sm mt-2"
+									th:href="@{/courses/{id}(id=${course.id})}"> View Details </a>
+
+							</div>
+						</article>
 					</div>
 
 				</div>

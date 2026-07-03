@@ -37,7 +37,7 @@
                         <small class="text-muted d-block mb-1"
                           >Student Name</small
                         >
-                        <strong class="fs-5" th:text="${student.name}">
+                        <strong class="fs-5" th:text="${session.loginUser?.name}">
                           Student Name
                         </strong>
                       </div>
@@ -72,9 +72,9 @@
                           <span th:if="${schedules != null}">
                             <span th:each="s : ${schedules}">
                               <span th:text="${s.date}"></span> (<span
-                                th:text="${s.startTime}"
+                                th:text="${#temporals.format(s.startTime,'hh:mm a')}"
                               ></span>
-                              - <span th:text="${s.endTime}"></span>) <br />
+                              - <span th:text="${#temporals.format(s.endTime,'hh:mm a')}"></span>) <br />
                             </span>
                           </span>
                         </strong>
